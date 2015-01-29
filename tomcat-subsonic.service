@@ -1,0 +1,19 @@
+[Unit]
+Description=Tomcat 7 Subsonic Instance
+After=network.target
+
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+
+Environment=JAVA_HOME=/usr/java/latest
+Environment=CATALINA_HOME=/usr/share/tomcat/tomcat-subsonic
+Environment=CATALINA_PID=/usr/share/tomcat/tomcat-subsonic/instance.pid
+PIDFile=/usr/share/tomcat/tomcat-subsonic/instance.pid
+
+ExecStart=/usr/share/tomcat/tomcat-subsonic/bin/startup.sh
+ExecStop=/usr/share/tomcat/tomcat-subsonic/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
